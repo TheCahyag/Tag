@@ -1,0 +1,7 @@
+name: Tag
+version: @version@
+main: com.servegame.bl4de.tag.TagBukkit
+prefix: [Tag]
+authors: [TheCahyag]
+description: A Simple Tag Game for Minecraft
+website: https://github.com/TheCahyag/Tag
