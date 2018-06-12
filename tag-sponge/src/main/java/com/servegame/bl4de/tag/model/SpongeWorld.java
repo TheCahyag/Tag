@@ -1,6 +1,9 @@
 package com.servegame.bl4de.tag.model;
 
 
-public class SpongeWorld {
+import com.servegame.bl4de.common.model.World;
+
+public class SpongeWorld implements World {
+
 
 }
