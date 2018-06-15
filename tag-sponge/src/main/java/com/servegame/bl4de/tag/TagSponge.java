@@ -2,9 +2,12 @@ package com.servegame.bl4de.tag;
 
 import com.google.inject.Inject;
 import org.slf4j.Logger;
+import org.spongepowered.api.Game;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Plugin;
+import org.spongepowered.api.plugin.PluginContainer;
+import org.spongepowered.api.text.Text;
 
 @Plugin(
         id = "tag",
@@ -17,10 +20,15 @@ import org.spongepowered.api.plugin.Plugin;
 )
 public class TagSponge {
 
-  @Inject
-  private Logger logger;
+    public static Logger logger;
+    public static TagSponge instance;
+    public static PluginContainer plugin;
 
-  @Listener
-  public void onServerStart(GameStartedServerEvent event) {
-  }
+    @Inject
+    private Game game;
+
+    @Listener
+    public void onServerStart(GameStartedServerEvent event) {
+        game.getServer().getConsole().sendMessage(Text.of("Hello world from plugin"));
+    }
 }
