@@ -1,4 +1,10 @@
 package com.servegame.bl4de.common.model;
 
-public interface Player {
+import com.servegame.bl4de.common.model.location.Vector3D;
+
+
+public interface Player extends Identifiable {
+
+    Vector3D getPosition();
+
 }
