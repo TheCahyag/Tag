@@ -3,8 +3,8 @@ package com.servegame.bl4de.common.model;
 import com.servegame.bl4de.common.model.location.Vector3D;
 
 
-public interface Player extends Identifiable {
+public abstract class AbstractPlayer implements Identifiable {
 
-    Vector3D getPosition();
+    public abstract Vector3D getPosition();
 
 }
