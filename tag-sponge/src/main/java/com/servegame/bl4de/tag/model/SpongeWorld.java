@@ -1,13 +1,14 @@
 package com.servegame.bl4de.tag.model;
 
 
-import com.servegame.bl4de.common.model.World;
+import com.servegame.bl4de.common.model.AbstractWorld;
+import org.spongepowered.api.world.World;
 
 import java.util.UUID;
 
-public class SpongeWorld implements World {
+public class SpongeWorld extends AbstractWorld {
 
-    private org.spongepowered.api.world.World world;
+    private World world;
 
     public SpongeWorld(org.spongepowered.api.world.World world){
         this.world = world;

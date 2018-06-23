@@ -1,7 +1,7 @@
 package com.servegame.bl4de.common;
 
 import com.servegame.bl4de.common.model.AbstractPlayer;
-import com.servegame.bl4de.common.model.World;
+import com.servegame.bl4de.common.model.AbstractWorld;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -24,14 +24,14 @@ public abstract class AbstractMiniGame {
     /** The time the mini game ended **/
     private LocalDateTime endTime;
 
-    /** The {@link World} that the mini game is taking place **/
-    private World location;
+    /** The {@link AbstractWorld} that the mini game is taking place **/
+    private AbstractWorld location;
 
     private AbstractTimer timer;
 
     // Constructors
 
-    public AbstractMiniGame(List<AbstractPlayer> activePlayers, World location, AbstractTimer timer){
+    public AbstractMiniGame(List<AbstractPlayer> activePlayers, AbstractWorld location, AbstractTimer timer){
         this.preCreation();
         this.activePlayers = activePlayers;
         this.location = location;

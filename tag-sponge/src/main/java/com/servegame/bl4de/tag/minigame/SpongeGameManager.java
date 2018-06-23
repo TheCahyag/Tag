@@ -3,7 +3,7 @@ package com.servegame.bl4de.tag.minigame;
 import com.servegame.bl4de.common.AbstractGameManager;
 import com.servegame.bl4de.common.AbstractMiniGame;
 import com.servegame.bl4de.common.model.AbstractPlayer;
-import com.servegame.bl4de.common.model.World;
+import com.servegame.bl4de.common.model.AbstractWorld;
 import com.servegame.bl4de.tag.TagSponge;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class SpongeGameManager extends AbstractGameManager {
     }
 
     @Override
-    public AbstractMiniGame createMiniGame(List<AbstractPlayer> players, World world) {
+    public AbstractMiniGame createMiniGame(List<AbstractPlayer> players, AbstractWorld world) {
         SpongeMiniGame miniGame = new SpongeMiniGame(players, world, null);
         this.runningGames.add(miniGame);
         System.out.println("A game has been created in sponge");
