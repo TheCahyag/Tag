@@ -1,4 +1,4 @@
-package com.servegame.bl4de.tag;
+package com.servegame.bl4de.common;
 
 /**
  * File: Resource.java
