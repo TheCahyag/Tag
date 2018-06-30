@@ -60,7 +60,7 @@ public abstract class AbstractMiniGame {
     public void stop() {
         this.preStop();
         this.endTime = LocalDateTime.now();
-        this.printStats();
+        this.printInfo();
         this.postStop();
     }
 
@@ -95,6 +95,6 @@ public abstract class AbstractMiniGame {
 
     protected abstract void postStop();
 
-    protected abstract void printStats();
+    protected abstract void printInfo();
 
 }
