@@ -27,6 +27,10 @@ public abstract class AbstractCommand<T extends CommandSource> implements Comman
     public abstract boolean checkPermission();
 
     public CommandResult runCommand(){
+        if (!this.checkPermission()){
+            System.out.println("user doesn't have permission");
+            return CommandResult.empty();
+        }
         return execute(this.src, this.args);
     }
 
