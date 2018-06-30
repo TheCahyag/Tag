@@ -1,5 +1,6 @@
 package com.servegame.bl4de.tag.command;
 
+import com.servegame.bl4de.common.TagPlugin;
 import org.spongepowered.api.command.CommandSource;
 import org.spongepowered.api.command.args.CommandContext;
 
@@ -10,8 +11,8 @@ import org.spongepowered.api.command.args.CommandContext;
  */
 public abstract class AbstractRunnableCommand<T extends CommandSource> extends AbstractCommand<T> implements Runnable {
 
-    public AbstractRunnableCommand(T src, CommandContext args){
-        super(src, args);
+    public AbstractRunnableCommand(T src, CommandContext args, TagPlugin plugin){
+        super(src, args, plugin);
     }
 
     @Override
