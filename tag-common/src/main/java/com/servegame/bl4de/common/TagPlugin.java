@@ -5,5 +5,5 @@ package com.servegame.bl4de.common;
  *
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
-public class TagPlugin {
+public interface TagPlugin {
 }
