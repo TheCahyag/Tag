@@ -1,5 +1,6 @@
 package com.servegame.bl4de.tag;
 
+import com.servegame.bl4de.common.TagPlugin;
 import com.servegame.bl4de.common.command.Descriptions;
 import com.servegame.bl4de.common.command.Permissions;
 import com.servegame.bl4de.tag.command.element.SpongeDuration;
@@ -19,7 +20,12 @@ import static org.spongepowered.api.command.args.GenericArguments.*;
  */
 public class SpongeUtil {
 
-    public static void registerCommands(CommandManager commandManager){
+    /**
+     * TODO
+     * @param plugin TODO
+     * @param commandManager TODO
+     */
+    public static void registerCommands(TagPlugin plugin, CommandManager commandManager){
 
         // /tag create -m# -t#<smh>
         CommandSpec create = CommandSpec.builder()
@@ -80,18 +86,26 @@ public class SpongeUtil {
                 .child(end, "end")
                 .child(listGames, "list")
                 .arguments(
-                        string(Text.of("game_name")),
                         optional(
-                                firstParsing(
-                                        // /tag <game_name> add
-                                        literal(Text.of("add")),
-                                        // /tag <game_name> join
-                                        literal(Text.of("join"))
+                                // /tag <game_name> ...
+                                string(Text.of("game_name")),
+                                optional(
+                                        firstParsing(
+                                                // /tag <game_name> add <player_name>
+                                                seq(
+                                                        literal(Text.of("add"), "add"),
+                                                        player(Text.of("player_name"))
+                                                ),
+                                                // /tag <game_name> join [-f]
+                                                seq(
+                                                        literal(Text.of("join"), "join"),
+                                                        optional(flags().flag("f").buildWith(none()))
+                                                )
+                                        )
                                 )
                         )
-
                 )
-
                 .build();
+        commandManager.register(plugin, tag, "tag");
     }
 }
