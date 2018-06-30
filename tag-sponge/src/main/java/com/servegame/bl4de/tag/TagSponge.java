@@ -2,6 +2,8 @@ package com.servegame.bl4de.tag;
 
 import com.google.inject.Inject;
 import com.servegame.bl4de.common.AbstractGameManager;
+import com.servegame.bl4de.common.Resource;
+import com.servegame.bl4de.common.TagPlugin;
 import com.servegame.bl4de.tag.minigame.SpongeGameManager;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
@@ -26,7 +28,7 @@ import org.spongepowered.api.plugin.PluginContainer;
         url = Resource.URL,
         authors = Resource.AUTHORS
 )
-public class TagSponge {
+public class TagSponge extends TagPlugin {
 
     public static Logger logger;
     public static TagSponge instance;
@@ -46,7 +48,7 @@ public class TagSponge {
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
-        SpongeUtil.registerCommands(Sponge.getCommandManager());
+        SpongeUtil.registerCommands(this, Sponge.getCommandManager());
     }
 
 
