@@ -13,6 +13,7 @@ public final class Descriptions {
     public static final String JOIN_GAME = "join";
     public static final String LIST_GAMES = "list";
     public static final String LIST_GAME_INFO = "info";
+    public static final String HELP = "help";
 
 
     public static final String CREATE_GAME = "create";

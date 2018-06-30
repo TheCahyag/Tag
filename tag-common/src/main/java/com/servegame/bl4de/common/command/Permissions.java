@@ -25,4 +25,5 @@ public final class Permissions {
     public static final String START_GAME = ACTION_PRE + "start";
     public static final String END_GAME = ACTION_PRE + "stop";
 
+    public static final String HELP = TAG_PRE + "help";
 }
