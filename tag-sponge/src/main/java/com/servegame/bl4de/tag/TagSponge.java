@@ -2,12 +2,10 @@ package com.servegame.bl4de.tag;
 
 import com.google.inject.Inject;
 import com.servegame.bl4de.common.AbstractGameManager;
-import com.servegame.bl4de.tag.command.StartGame;
 import com.servegame.bl4de.tag.minigame.SpongeGameManager;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.command.spec.CommandSpec;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GameConstructionEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
@@ -48,14 +46,7 @@ public class TagSponge {
 
     @Listener
     public void onServerStart(GameStartedServerEvent event) {
-
-        CommandSpec startGame = CommandSpec.builder()
-                .executor(new StartGame())
-                .build();
-        Sponge.getCommandManager().register(plugin, startGame, "startgame");
-
-
-
+        SpongeUtil.registerCommands(Sponge.getCommandManager());
     }
 
 
