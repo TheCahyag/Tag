@@ -2,9 +2,9 @@ package com.servegame.bl4de.tag.minigame;
 
 import com.servegame.bl4de.common.AbstractGameManager;
 import com.servegame.bl4de.common.AbstractMiniGame;
+import com.servegame.bl4de.common.TagPlugin;
 import com.servegame.bl4de.common.model.AbstractPlayer;
 import com.servegame.bl4de.common.model.AbstractWorld;
-import com.servegame.bl4de.tag.TagSponge;
 
 import java.util.List;
 
@@ -15,11 +15,8 @@ import java.util.List;
  */
 public class SpongeGameManager extends AbstractGameManager {
 
-    private TagSponge tag;
-
-    public SpongeGameManager(TagSponge tag){
-        super();
-        this.tag = tag;
+    public SpongeGameManager(TagPlugin plugin){
+        super(plugin);
     }
 
     @Override
