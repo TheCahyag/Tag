@@ -51,6 +51,12 @@ public abstract class AbstractCommand<T extends CommandSource> implements Comman
      */
     public abstract Text getCommandUsage();
 
+    /**
+     * TODO
+     * @return TODO
+     */
+    public abstract Text getExtendedCommandUsage();
+
     // Temp
 
     public void hello(){
