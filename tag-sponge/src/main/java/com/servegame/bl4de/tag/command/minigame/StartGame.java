@@ -56,4 +56,9 @@ public class StartGame extends AbstractRunnableCommand<CommandSource> {
     public Text getCommandUsage() {
         return Text.of("/start");
     }
+
+    @Override
+    public Text getExtendedCommandUsage() {
+        return null;
+    }
 }

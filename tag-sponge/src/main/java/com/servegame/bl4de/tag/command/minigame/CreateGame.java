@@ -33,4 +33,9 @@ public class CreateGame extends AbstractRunnableCommand<CommandSource> {
     public Text getCommandUsage() {
         return Text.of("/create");
     }
+
+    @Override
+    public Text getExtendedCommandUsage() {
+        return null;
+    }
 }

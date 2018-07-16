@@ -33,4 +33,9 @@ public class ListGames extends AbstractRunnableCommand<CommandSource> {
     public Text getCommandUsage() {
         return Text.of("/list");
     }
+
+    @Override
+    public Text getExtendedCommandUsage() {
+        return null;
+    }
 }

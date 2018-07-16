@@ -34,7 +34,7 @@ public class Help extends AbstractRunnableCommand<CommandSource> {
                 commandUsages) {
             message = message.toBuilder().append(text, Text.of("\n")).build();
         }
-        message = message.toBuilder().append(message.toText(), Text.of("--------------------------------")).build();
+        message = message.toBuilder().append(Text.of("--------------------------------")).build();
         src.sendMessage(message);
         hello();
         return CommandResult.success();

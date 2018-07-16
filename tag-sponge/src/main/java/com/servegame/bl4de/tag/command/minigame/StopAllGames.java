@@ -41,4 +41,9 @@ public class StopAllGames extends AbstractRunnableCommand<CommandSource> {
     public Text getCommandUsage() {
         return Text.of("/stopall");
     }
+
+    @Override
+    public Text getExtendedCommandUsage() {
+        return null;
+    }
 }
