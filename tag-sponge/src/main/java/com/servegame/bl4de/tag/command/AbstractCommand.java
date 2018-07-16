@@ -21,7 +21,7 @@ public abstract class AbstractCommand<T extends CommandSource> implements Comman
     public AbstractCommand(T src, CommandContext args, TagPlugin plugin) {
         this.src = src;
         this.args = args;
-        TagSponge.tagSponge.getTagCommandManager().registerCommand(plugin, this);
+        TagSponge.tagSponge.getTagCommandManager().registerCommandUsage(plugin, this.getCommandUsage());
     }
 
     /**
