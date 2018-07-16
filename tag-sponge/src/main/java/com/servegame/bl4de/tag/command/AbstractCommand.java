@@ -13,7 +13,7 @@ import org.spongepowered.api.text.Text;
  *
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
-public abstract class AbstractCommand<T extends CommandSource> implements CommandExecutor {
+public abstract class AbstractCommand<T extends CommandSource> implements CommandExecutor, Command {
 
     protected T src;
     protected CommandContext args;
@@ -21,7 +21,7 @@ public abstract class AbstractCommand<T extends CommandSource> implements Comman
     public AbstractCommand(T src, CommandContext args, TagPlugin plugin) {
         this.src = src;
         this.args = args;
-        TagSponge.tagSponge.getTagCommandManager().registerCommandUsage(plugin, this.getCommandUsage());
+        TagSponge.tagSponge.getTagCommandManager().registerCommandUsage(plugin, this);
     }
 
     /**
@@ -44,18 +44,6 @@ public abstract class AbstractCommand<T extends CommandSource> implements Comman
 
     @Override
     public abstract CommandResult execute(CommandSource src, CommandContext args);
-
-    /**
-     * TODO
-     * @return TODO
-     */
-    public abstract Text getCommandUsage();
-
-    /**
-     * TODO
-     * @return TODO
-     */
-    public abstract Text getExtendedCommandUsage();
 
     // Temp
 
