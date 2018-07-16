@@ -1,10 +1,9 @@
 package com.servegame.bl4de.tag;
 
 import com.servegame.bl4de.common.TagPlugin;
-import com.servegame.bl4de.tag.command.AbstractCommand;
+import org.spongepowered.api.text.Text;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -14,15 +13,19 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
 public class AbstractCommandManager {
-    private Map<TagPlugin, AbstractCommand> mappings;
+    private Map<TagPlugin, Set<Text>> usages;
 
     public AbstractCommandManager() {
-        this.mappings = new HashMap<>();
+        this.usages = new HashMap<>();
     }
 
-    public void registerCommand(TagPlugin plugin, AbstractCommand command){
+    public void registerCommandUsage(TagPlugin plugin, Text commandUsage){
         checkNotNull(plugin, "TagPlugin can't be null!");
-        checkNotNull(command, "Command can't be null!");
-        this.mappings.put(plugin, command);
+        checkNotNull(commandUsage, "Command Usage can't be null!");
+        this.usages.computeIfAbsent(plugin, k -> new HashSet<>()).add(commandUsage);
+    }
+
+    public List<Text> getCommandUsages(TagPlugin plugin){
+        return new ArrayList<>(this.usages.get(plugin));
     }
 }
