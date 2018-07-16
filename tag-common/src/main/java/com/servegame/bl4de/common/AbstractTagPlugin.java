@@ -13,7 +13,7 @@ public class AbstractTagPlugin implements TagPlugin {
     protected static AbstractGameManager gameManager;
 
     @NotNull
-    public static AbstractTagPlugin instance;
+    public static TagPlugin instance;
 
     // protected AbstractCommandManager commandManager;
 }
