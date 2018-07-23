@@ -1,0 +1,23 @@
+//description = 'Tag - A Simple Tag Minigame for Minecraft.'
+//ext.url = 'https://github.com/TheCahyag/Tag'
+//blossom {
+//    def location = 'src/main/java/com/servegame/bl4de/tag/TagSponge.java'
+//
+//    replaceToken '@name@', project.name, location
+//    replaceToken '@version@', project.version, location
+//
+//    replaceToken '@description@', project.description, location
+//    replaceToken '@url@', project.url, location
+//
+////    location = 'src/main/resources/mcmod.info'
+////
+////    replaceToken '@name@', project.name, location
+////    replaceToken '@version@', project.version, location
+////
+////    replaceToken '@description@', project.description, location
+////    replaceToken '@url@', project.url, location
+//}
+//
+//allprojects {
+//    version = rootProject.minecraftversion + "-" + rootProject.versionno + "." + rootProject.buildno + rootProject.versionending
+//}
