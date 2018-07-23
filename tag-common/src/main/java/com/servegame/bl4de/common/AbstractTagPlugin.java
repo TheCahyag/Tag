@@ -1,7 +1,5 @@
 package com.servegame.bl4de.common;
 
-import com.sun.istack.internal.NotNull;
-
 /**
  * File: TagPlugin.java
  *
@@ -9,10 +7,8 @@ import com.sun.istack.internal.NotNull;
  */
 public class AbstractTagPlugin implements TagPlugin {
 
-    @NotNull
     protected static AbstractGameManager gameManager;
 
-    @NotNull
     public static TagPlugin instance;
 
     // protected AbstractCommandManager commandManager;
