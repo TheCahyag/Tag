@@ -1,7 +1,7 @@
 package com.servegame.bl4de.common;
 
 import com.servegame.bl4de.common.model.AbstractPlayer;
-import com.servegame.bl4de.common.model.World;
+import com.servegame.bl4de.common.model.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,10 @@ import java.util.List;
 public abstract class AbstractGameManager {
 
     protected List<AbstractMiniGame> runningGames;
+    protected TagPlugin plugin;
 
-    public AbstractGameManager() {
+    public AbstractGameManager(TagPlugin plugin) {
+        this.plugin = plugin;
         this.runningGames = new ArrayList<>();
     }
 
@@ -23,5 +25,11 @@ public abstract class AbstractGameManager {
         return runningGames;
     }
 
-    public abstract AbstractMiniGame createMiniGame(List<AbstractPlayer> players, World world);
+    public abstract AbstractMiniGame createMiniGame(List<AbstractPlayer> players, AbstractWorld world);
+
+    public void startMiniGame(AbstractMiniGame miniGame){
+        if (this.runningGames.contains(miniGame)){
+            miniGame.start();
+        }
+    }
 }
