@@ -7,10 +7,11 @@ package com.servegame.bl4de.common;
  */
 public interface TagPlugin {
 
-    String NAME = "@name@";
+    String NAME = "Tag";
     String ID = "tag";
     String VERSION = "@version@";
     String AUTHORS = "TheCahyag";
-    String URL = "@url@";
-    String DESCRIPTION = "@description@";
+    String URL = "https://github.com/TheCahyag/Tag";
+    String DESCRIPTION = "A simple Minecraft Tag minigame";
+
 }
