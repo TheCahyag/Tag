@@ -3,12 +3,17 @@ package com.servegame.bl4de.tag;
 import com.servegame.bl4de.common.TagPlugin;
 import com.servegame.bl4de.common.command.Descriptions;
 import com.servegame.bl4de.common.command.Permissions;
+import com.servegame.bl4de.tag.command.AbstractRunnableCommand;
 import com.servegame.bl4de.tag.command.CommandGateKeeper;
 import com.servegame.bl4de.tag.command.element.SpongeDuration;
 import com.servegame.bl4de.tag.command.minigame.*;
 import org.spongepowered.api.command.CommandManager;
+import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.spec.CommandSpec;
+import org.spongepowered.api.scheduler.Task;
 import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.action.HoverAction;
+import org.spongepowered.api.text.action.TextActions;
 
 import static org.spongepowered.api.command.args.GenericArguments.*;
 
@@ -18,6 +23,19 @@ import static org.spongepowered.api.command.args.GenericArguments.*;
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
 public class SpongeUtil {
+
+    public final static HoverAction ON_COMMAND_HOVER = TextActions.showText(Text.of("Click to view command parameters"));
+
+    /**
+     * Creates a {@link Task.Builder#async()} {@link Task} that executes the action command being ran
+     * @param commandInstance instance of a {@link AbstractRunnableCommand}
+     * @return {@link CommandResult#success()}
+     */
+    public static CommandResult executeRunnableCommand(AbstractRunnableCommand commandInstance){
+        Task.Builder taskBuilder = Task.builder().async().execute(commandInstance);
+        taskBuilder.submit(TagSponge.plugin);
+        return CommandResult.success();
+    }
 
     /**
      * TODO
@@ -107,5 +125,17 @@ public class SpongeUtil {
                 .executor((src, args) -> new CommandGateKeeper(src, args, plugin).runCommand())
                 .build();
         commandManager.register(plugin, tag, "tag");
+        registerCommandsInternally();
+    }
+
+    private static void registerCommandsInternally(){
+        TagPlugin tagSponge = TagSponge.tagSponge;
+        new CreateGame(null, null, tagSponge);
+        new EndGame(null, null, tagSponge);
+        new Help(null, null, tagSponge);
+        new ListGames(null, null, tagSponge);
+        new StartGame(null, null, tagSponge);
+        new StopAllGames(null, null, tagSponge);
+        new CommandGateKeeper(null, null, tagSponge);
     }
 }
