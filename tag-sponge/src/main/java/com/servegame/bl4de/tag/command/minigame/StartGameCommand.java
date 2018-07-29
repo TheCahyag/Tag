@@ -23,9 +23,9 @@ import java.util.UUID;
  *
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
-public class StartGame extends AbstractRunnableCommand<CommandSource> {
+public class StartGameCommand extends AbstractRunnableCommand<CommandSource> {
 
-    public StartGame(CommandSource src, CommandContext args, TagPlugin plugin) {
+    public StartGameCommand(CommandSource src, CommandContext args, TagPlugin plugin) {
         super(src, args, plugin);
     }
 
@@ -59,6 +59,6 @@ public class StartGame extends AbstractRunnableCommand<CommandSource> {
 
     @Override
     public Text getExtendedCommandUsage() {
-        return null;
+        return Text.of("Extended command usage");
     }
 }

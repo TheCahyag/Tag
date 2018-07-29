@@ -8,13 +8,13 @@ import org.spongepowered.api.command.args.CommandContext;
 import org.spongepowered.api.text.Text;
 
 /**
- * File: EndGame.java
+ * File: ListGames.java
  *
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
-public class EndGame extends AbstractRunnableCommand<CommandSource> {
+public class ListGamesCommand extends AbstractRunnableCommand<CommandSource> {
 
-    public EndGame(CommandSource src, CommandContext args, TagPlugin plugin) {
+    public ListGamesCommand(CommandSource src, CommandContext args, TagPlugin plugin) {
         super(src, args, plugin);
     }
 
@@ -31,11 +31,11 @@ public class EndGame extends AbstractRunnableCommand<CommandSource> {
 
     @Override
     public Text getCommandUsage() {
-        return Text.of("/end");
+        return Text.of("/list");
     }
 
     @Override
     public Text getExtendedCommandUsage() {
-        return null;
+        return Text.of("Extended command usage");
     }
 }
