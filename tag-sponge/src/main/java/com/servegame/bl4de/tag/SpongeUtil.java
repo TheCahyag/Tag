@@ -59,7 +59,7 @@ public class SpongeUtil {
                 )
                 .description(Text.of(Descriptions.CREATE_GAME))
                 .permission(Permissions.CREATE_GAME)
-                .executor((src, args) -> new CreateGame(src, args, plugin).runCommand())
+                .executor((src, args) -> new CreateGameCommand(src, args, plugin).runCommand())
                 .build();
 
         // /tag start <game_name>
@@ -69,7 +69,7 @@ public class SpongeUtil {
                 )
                 .description(Text.of(Descriptions.START_GAME))
                 .permission(Permissions.START_GAME)
-                .executor((src, args) -> new StartGame(src, args, plugin).runCommand())
+                .executor((src, args) -> new StartGameCommand(src, args, plugin).runCommand())
                 .build();
 
         // /tag end <game_name> [-f]
@@ -80,21 +80,21 @@ public class SpongeUtil {
                 )
                 .description(Text.of(Descriptions.END_GAME))
                 .permission(Permissions.END_GAME)
-                .executor((src, args) -> new EndGame(src, args, plugin).runCommand())
+                .executor((src, args) -> new EndGameCommand(src, args, plugin).runCommand())
                 .build();
 
         // /tag list
         CommandSpec listGames = CommandSpec.builder()
                 .description(Text.of(Descriptions.LIST_GAMES))
                 .permission(Permissions.LIST_GAMES)
-                .executor((src, args) -> new ListGames(src, args, plugin).runCommand())
+                .executor((src, args) -> new ListGamesCommand(src, args, plugin).runCommand())
                 .build();
 
         // /tag help
         CommandSpec help = CommandSpec.builder()
                 .description(Text.of(Descriptions.HELP))
                 .permission(Permissions.HELP)
-                .executor((src, args) -> new Help(src, args, plugin).runCommand())
+                .executor((src, args) -> new HelpCommand(src, args, plugin).runCommand())
                 .build();
 
         // /tag ...
@@ -130,12 +130,12 @@ public class SpongeUtil {
 
     private static void registerCommandsInternally(){
         TagPlugin tagSponge = TagSponge.tagSponge;
-        new CreateGame(null, null, tagSponge);
-        new EndGame(null, null, tagSponge);
-        new Help(null, null, tagSponge);
-        new ListGames(null, null, tagSponge);
-        new StartGame(null, null, tagSponge);
-        new StopAllGames(null, null, tagSponge);
+        new CreateGameCommand(null, null, tagSponge);
+        new EndGameCommand(null, null, tagSponge);
+        new HelpCommand(null, null, tagSponge);
+        new ListGamesCommand(null, null, tagSponge);
+        new StartGameCommand(null, null, tagSponge);
+        new StopAllGamesCommand(null, null, tagSponge);
         new CommandGateKeeper(null, null, tagSponge);
     }
 }
