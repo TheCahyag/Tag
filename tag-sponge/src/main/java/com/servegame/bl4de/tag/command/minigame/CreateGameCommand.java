@@ -36,6 +36,17 @@ public class CreateGameCommand extends AbstractRunnableCommand<CommandSource> {
 
     @Override
     public Text getExtendedCommandUsage() {
-        return Text.of("Extended command usage");
+        return Text.builder()
+                .append(this.getCommandUsage(), Text.of("\n"))
+                .append(Text.of("DESCRIPTION\n"))
+                .append(Text.of("  Create a game of tag\n"))
+                .append(Text.of("PARAMETERS\n"))
+                .append(Text.of("  REQUIRED\n"))
+                .append(Text.of("    <game_name>: Name for the mini game\n"))
+                .append(Text.of("  OPTIONAL\n"))
+                .append(Text.of("    -s#: Maximum number of players\n"))
+                .append(Text.of("    -t#<s|m|h>: Max time for game\n"))
+                .append(Text.of("---------------------------------------\n"))
+                .build();
     }
 }
