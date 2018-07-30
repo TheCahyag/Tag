@@ -5,7 +5,7 @@ import com.servegame.bl4de.common.command.Descriptions;
 import com.servegame.bl4de.common.command.Permissions;
 import com.servegame.bl4de.tag.command.AbstractRunnableCommand;
 import com.servegame.bl4de.tag.command.CommandGateKeeper;
-import com.servegame.bl4de.tag.command.element.SpongeDuration;
+import com.servegame.bl4de.tag.command.element.SpongeDurationElement;
 import com.servegame.bl4de.tag.command.minigame.*;
 import org.spongepowered.api.command.CommandManager;
 import org.spongepowered.api.command.CommandResult;
@@ -53,7 +53,7 @@ public class SpongeUtil {
                                 .valueFlag(integer(Text.of("max_players")), "p")
                                 .buildWith(none()),
                                 flags()
-                                .valueFlag(new SpongeDuration(Text.of("time")), "t")
+                                .valueFlag(new SpongeDurationElement(Text.of("time")), "t")
                                 .buildWith(none())
                         )
                 )
