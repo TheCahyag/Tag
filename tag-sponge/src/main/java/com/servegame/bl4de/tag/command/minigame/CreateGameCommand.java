@@ -31,7 +31,7 @@ public class CreateGameCommand extends AbstractRunnableCommand<CommandSource> {
 
     @Override
     public Text getCommandUsage() {
-        return Text.of("/create");
+        return Text.of("/tag create <game_name> [-s#] [-t#<s|m|h>]");
     }
 
     @Override
