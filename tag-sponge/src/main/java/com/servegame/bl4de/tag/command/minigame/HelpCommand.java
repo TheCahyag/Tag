@@ -38,16 +38,15 @@ public class HelpCommand extends AbstractRunnableCommand<CommandSource> {
         for (Command command :
                 commandUsages) {
             message = message.toBuilder()
-                    .append(command.getCommandUsage(), Text.of("\n"))
-                    .onHover(ON_COMMAND_HOVER)
-                    .onClick(TextActions.executeCallback(
-                            commandSource -> commandSource.sendMessage(command.getExtendedCommandUsage())
-                    ))
+                    .append(Text.builder()
+                            .append(command.getCommandUsage(), Text.of("\n"))
+                            .onHover(ON_COMMAND_HOVER)
+                            .onClick(TextActions.executeCallback(commandSource -> command.getExtendedCommandUsage()))
+                            .build())
                     .build();
         }
         message = message.toBuilder().append(Text.of(DARK_RED, "---------------------------------------")).build();
         src.sendMessage(message);
-        hello();
         return CommandResult.success();
     }
 
@@ -58,6 +57,6 @@ public class HelpCommand extends AbstractRunnableCommand<CommandSource> {
 
     @Override
     public Text getExtendedCommandUsage() {
-        return null;
+        return Text.of("extended command usage");
     }
 }
