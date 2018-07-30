@@ -16,11 +16,11 @@ import java.util.List;
  *
  * @author Brandon Bires-Navel (brandonnavel@outlook.com)
  */
-public class SpongeDuration extends CommandElement implements Duration {
+public class SpongeDurationElement extends CommandElement implements Duration {
 
     private Long seconds;
 
-    public SpongeDuration(@Nullable Text key) {
+    public SpongeDurationElement(@Nullable Text key) {
         super(key);
         this.seconds = 0L;
     }
