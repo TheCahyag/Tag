@@ -17,4 +17,13 @@ public abstract class AbstractPlayer implements Identifiable {
     public boolean isObserver() {
         return isObserver;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AbstractPlayer){
+            AbstractPlayer player = ((AbstractPlayer) obj);
+            return this.getUUID().equals(player.getUUID());
+        }
+        return false;
+    }
 }
