@@ -2,9 +2,10 @@ package com.servegame.bl4de.common;
 
 import com.servegame.bl4de.common.model.AbstractPlayer;
 import com.servegame.bl4de.common.model.AbstractWorld;
+import com.servegame.bl4de.common.model.PostGameStats;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,29 +13,56 @@ public abstract class AbstractMiniGame {
 
     // State
 
+    /** TODO **/
+    private String name;
+
     /** List of {@link AbstractPlayer}s who are in the mini game **/
     private List<AbstractPlayer> activePlayers;
+
+    /** List of {@link AbstractPlayer}s who are watching the game but can't participate**/
+    private List<AbstractPlayer> spectators;
 
     /** The {@link AbstractPlayer} who is currently tagged **/
     private AbstractPlayer it;
 
-    /** The time the mini game started **/
-    private LocalDateTime startTime;
-
-    /** The time the mini game ended **/
-    private LocalDateTime endTime;
-
     /** The {@link AbstractWorld} that the mini game is taking place **/
     private AbstractWorld location;
 
+    /** TODO **/
     private AbstractTimer timer;
+
+    /** TODO **/
+    private PostGameStats postGameStats;
+
+    private Status status;
+
+    /**
+     * TODO
+     */
+    public static enum Status {
+        /** TODO **/
+        CREATED,
+
+        /** TODO **/
+        STARTED,
+
+        /** TODO **/
+        PAUSED,
+
+        /** TODO **/
+        FINISHED
+    }
 
     // Constructors
 
-    public AbstractMiniGame(List<AbstractPlayer> activePlayers, AbstractWorld location, AbstractTimer timer){
+    public AbstractMiniGame(String name, AbstractWorld location, AbstractTimer timer){
         this.preCreation();
-        this.activePlayers = activePlayers;
+        this.name = name;
+        this.activePlayers = new ArrayList<>();
+        this.spectators = new ArrayList<>();
+        this.timer = timer;
         this.location = location;
+        this.status = Status.CREATED;
         this.postCreation();
     }
 
@@ -46,10 +74,12 @@ public abstract class AbstractMiniGame {
     public void start() {
         this.preStart();
 
+        this.status = Status.STARTED;
         Random random = new Random();
+        this.timer.startTimer();
         this.it = this.activePlayers.get(random.nextInt(activePlayers.size()));
         this.newTaggedPlayer(it);
-        this.startTime = LocalDateTime.now();
+
 
         this.postStart();
     }
@@ -59,7 +89,9 @@ public abstract class AbstractMiniGame {
      */
     public void stop() {
         this.preStop();
-        this.endTime = LocalDateTime.now();
+
+        this.status = Status.FINISHED;
+        this.timer.stopTimer();
         this.printInfo();
         this.postStop();
     }
@@ -70,13 +102,7 @@ public abstract class AbstractMiniGame {
     }
 
     public Duration getTotalGameTime(){
-        Duration timeDiff;
-        if (this.endTime == null) {
-            timeDiff = Duration.between(this.startTime, LocalDateTime.now());
-        } else {
-            timeDiff = Duration.between(this.startTime, this.endTime);
-        }
-        return timeDiff;
+        return this.timer.getDuration();
     }
 
     // Mini game lifecycle
@@ -97,4 +123,23 @@ public abstract class AbstractMiniGame {
 
     protected abstract void printInfo();
 
+    // Getters and setters
+
+
+    public String getName() {
+        return name;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    /**
+     * TODO
+     * @param player
+     * @return
+     */
+    public boolean hasPlayer(AbstractPlayer player){
+        return this.activePlayers.contains(player);
+    }
 }
